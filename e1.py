@@ -13,8 +13,8 @@ tags = soup.find_all('tr', 'election_item')
 
 election_dict = {}
 for t in tags:
-    year = t.td.text
-    year_id = t['id'][-5:]
+    year = t.td.text #get years
+    year_id = t['id'][-5:] #get IDs
     election_ID.append(year + ' ' + year_id)
     election_dict[year] = year_id
-print(election_ID)
+print(election_ID) # solution set of years and corresponding election IDS
