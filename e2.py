@@ -16,7 +16,7 @@ tags = soup.find_all('tr', 'election_item')
 election_dict = {}
 for t in tags:
     year = t.td.text
-    year_id = t['id'][-5:]
+    year_id = t['id'][-5:] #just want last 5 #s for ID
     election_ID.append(year + ' ' + year_id)
     election_dict[year] = year_id
 #print(election_ID)
@@ -30,4 +30,4 @@ base = 'http://historical.elections.virginia.gov/elections/download/{}/precincts
 for year in election_dict.keys():
     addr = base.format(election_dict[year])
     with open( 'president_general_' + year + '.csv', 'w') as output:
-        output.write(requests.get(addr).text)
+        output.write(requests.get(addr).text) # write/save files for Presidential general election years
